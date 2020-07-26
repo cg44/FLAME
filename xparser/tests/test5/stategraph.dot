@@ -1,0 +1,126 @@
+digraph state_graph {
+	rankdir=TB;
+	size="8,5;"
+	
+	/* Layers */
+	layer_0 [shape=plaintext, label="layer 0"];
+	layer_0_b [style=invis, shape=point];
+	layer_0_a [style=invis, shape=point];
+	layer_0_b -> layer_0 [style=invis];
+	layer_0 -> layer_0_a [style=invis];
+	layer_1 [shape=plaintext, label="layer 1"];
+	layer_1_b [style=invis, shape=point];
+	layer_1_a [style=invis, shape=point];
+	layer_1_b -> layer_1 [style=invis];
+	layer_1 -> layer_1_a [style=invis];
+	layer_0_a -> layer_1_b [style=invis];
+	layer_2 [shape=plaintext, label="layer 2"];
+	layer_2_b [style=invis, shape=point];
+	layer_2_a [style=invis, shape=point];
+	layer_2_b -> layer_2 [style=invis];
+	layer_2 -> layer_2_a [style=invis];
+	layer_1_a -> layer_2_b [style=invis];
+	layer_3 [shape=plaintext, label="layer 3"];
+	layer_3_b [style=invis, shape=point];
+	layer_3_a [style=invis, shape=point];
+	layer_3_b -> layer_3 [style=invis];
+	layer_3 -> layer_3_a [style=invis];
+	layer_2_a -> layer_3_b [style=invis];
+	layer_4 [shape=plaintext, label="layer 4"];
+	layer_4_b [style=invis, shape=point];
+	layer_4_a [style=invis, shape=point];
+	layer_4_b -> layer_4 [style=invis];
+	layer_4 -> layer_4_a [style=invis];
+	layer_3_a -> layer_4_b [style=invis];
+	layer_5 [shape=plaintext, label="layer 5"];
+	layer_5_b [style=invis, shape=point];
+	layer_5_a [style=invis, shape=point];
+	layer_5_b -> layer_5 [style=invis];
+	layer_5 -> layer_5_a [style=invis];
+	layer_4_a -> layer_5_b [style=invis];
+	layer_6 [shape=plaintext, label="layer 6"];
+	layer_6_b [style=invis, shape=point];
+	layer_6_a [style=invis, shape=point];
+	layer_6_b -> layer_6 [style=invis];
+	layer_6 -> layer_6_a [style=invis];
+	layer_5_a -> layer_6_b [style=invis];
+	
+	/* States */
+	agent_a_end [label = "end"]
+	agent_a_middle6 [label = "middle6"]
+	agent_a_middle5 [label = "middle5"]
+	agent_a_middle4 [label = "middle4"]
+	agent_a_middle3 [label = "middle3"]
+	agent_a_middle2 [label = "middle2"]
+	agent_a_middle1 [label = "middle1"]
+	agent_a_start [label = "start"]
+	
+	/* Functions */
+	agent_a_agent_a_send_start_middle1 [label = "agent_a_send", shape = rect]
+	agent_a_agent_a_not_random_middle1_middle2 [label = "agent_a_not_random", shape = rect]
+	agent_a_agent_a_random_middle2_middle3 [label = "agent_a_random", shape = rect]
+	agent_a_agent_a_not_random_sort_middle3_middle4 [label = "agent_a_not_random_sort", shape = rect]
+	agent_a_agent_a_random_sort_middle4_middle5 [label = "agent_a_random_sort", shape = rect]
+	agent_a_agent_a_filter_middle5_middle6 [label = "agent_a_filter", shape = rect]
+	agent_a_agent_a_filter_sort_middle6_end [label = "agent_a_filter_sort", shape = rect]
+	
+	/* Message types */
+	m_sub_1_message [ label = "m_sub_1" color="#00ff00" shape = parallelogram];
+	m_sub_1_message -> m_sub_1_message_start_0 [ color="#00ff00" ];
+	m_sub_1_message_start_0 [ label = "start 0" color="#00ff00" shape = parallelogram];
+	m_sub_1_message_start_0 -> m_sub_1_message_end_0 [ color="#00ff00" ];
+	m_sub_1_message_end_0 [ label = "end 1" color="#00ff00" shape = parallelogram];
+	m_sub_1_message_end_0 -> agent_a_agent_a_filter_sort_middle6_end [ color="#00ff00" label = "m.id IN a.int_dyn_array\nsort: FLAME_sort_agent_a_agent_a_filter_sort_middle6_end_m_sub_1" ];
+	m_sub_1_message_end_0 -> agent_a_agent_a_filter_middle5_middle6 [ color="#00ff00" label = "m.id IN a.int_dyn_array" ];
+	m_sub_1_message_end_0 -> agent_a_agent_a_random_sort_middle4_middle5 [ color="#00ff00" label = "\nrandom\nsort: FLAME_sort_agent_a_agent_a_random_sort_middle4_middle5_m_sub_1" ];
+	m_sub_1_message_end_0 -> agent_a_agent_a_not_random_sort_middle3_middle4 [ color="#00ff00" label = "\nsort: FLAME_sort_agent_a_agent_a_not_random_sort_middle3_middle4_m_sub_1" ];
+	m_sub_1_message_end_0 -> agent_a_agent_a_random_middle2_middle3 [ color="#00ff00" label = "\nrandom" ];
+	m_sub_1_message_end_0 -> agent_a_agent_a_not_random_middle1_middle2 [ color="#00ff00" label = "" ];
+	m_sub_2_message [ label = "m_sub_2" color="#00ff00" shape = parallelogram];
+	m_sub_2_message -> m_sub_2_message_start_0 [ color="#00ff00" ];
+	m_sub_2_message_start_0 [ label = "start 0" color="#00ff00" shape = parallelogram];
+	m_sub_2_message_start_0 -> m_sub_2_message_end_0 [ color="#00ff00" ];
+	m_sub_2_message_end_0 [ label = "end 5" color="#00ff00" shape = parallelogram];
+	m_sub_2_message_end_0 -> agent_a_agent_a_filter_middle5_middle6 [ color="#00ff00" label = "m.id EQ a.int_single" ];
+	
+	/* Transitions */
+	agent_a_start -> agent_a_agent_a_send_start_middle1;
+	agent_a_agent_a_send_start_middle1 -> agent_a_middle1;
+	agent_a_middle1 -> agent_a_agent_a_not_random_middle1_middle2;
+	agent_a_agent_a_not_random_middle1_middle2 -> agent_a_middle2;
+	agent_a_middle2 -> agent_a_agent_a_random_middle2_middle3;
+	agent_a_agent_a_random_middle2_middle3 -> agent_a_middle3;
+	agent_a_middle3 -> agent_a_agent_a_not_random_sort_middle3_middle4;
+	agent_a_agent_a_not_random_sort_middle3_middle4 -> agent_a_middle4;
+	agent_a_middle4 -> agent_a_agent_a_random_sort_middle4_middle5;
+	agent_a_agent_a_random_sort_middle4_middle5 -> agent_a_middle5;
+	agent_a_middle5 -> agent_a_agent_a_filter_middle5_middle6;
+	agent_a_agent_a_filter_middle5_middle6 -> agent_a_middle6;
+	agent_a_middle6 -> agent_a_agent_a_filter_sort_middle6_end;
+	agent_a_agent_a_filter_sort_middle6_end -> agent_a_end;
+	
+	/* Communications */
+	agent_a_agent_a_send_start_middle1 -> m_sub_1_message [ color="#00ff00" ];
+	agent_a_agent_a_send_start_middle1 -> m_sub_2_message [ color="#00ff00" ];
+	{ rank=same; layer_0;  agent_a_agent_a_send_start_middle1; }
+	{ rank=same; layer_0_b; }
+	{ rank=same; layer_0_a; m_sub_1_message_start_0; m_sub_2_message_start_0; }
+	{ rank=same; layer_1;  agent_a_agent_a_not_random_middle1_middle2; }
+	{ rank=same; layer_1_b; m_sub_1_message_end_0; }
+	{ rank=same; layer_1_a; }
+	{ rank=same; layer_2;  agent_a_agent_a_random_middle2_middle3; }
+	{ rank=same; layer_2_b; }
+	{ rank=same; layer_2_a; }
+	{ rank=same; layer_3;  agent_a_agent_a_not_random_sort_middle3_middle4; }
+	{ rank=same; layer_3_b; }
+	{ rank=same; layer_3_a; }
+	{ rank=same; layer_4;  agent_a_agent_a_random_sort_middle4_middle5; }
+	{ rank=same; layer_4_b; }
+	{ rank=same; layer_4_a; }
+	{ rank=same; layer_5;  agent_a_agent_a_filter_middle5_middle6; }
+	{ rank=same; layer_5_b; m_sub_2_message_end_0; }
+	{ rank=same; layer_5_a; }
+	{ rank=same; layer_6;  agent_a_agent_a_filter_sort_middle6_end; }
+	{ rank=same; layer_6_b; }
+	{ rank=same; layer_6_a; }
+}

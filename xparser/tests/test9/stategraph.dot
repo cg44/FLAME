@@ -1,0 +1,103 @@
+digraph state_graph {
+	rankdir=TB;
+	size="8,5;"
+	
+	/* Layers */
+	layer_0 [shape=plaintext, label="layer 0"];
+	layer_0_b [style=invis, shape=point];
+	layer_0_a [style=invis, shape=point];
+	layer_0_b -> layer_0 [style=invis];
+	layer_0 -> layer_0_a [style=invis];
+	layer_1 [shape=plaintext, label="layer 1"];
+	layer_1_b [style=invis, shape=point];
+	layer_1_a [style=invis, shape=point];
+	layer_1_b -> layer_1 [style=invis];
+	layer_1 -> layer_1_a [style=invis];
+	layer_0_a -> layer_1_b [style=invis];
+	layer_2 [shape=plaintext, label="layer 2"];
+	layer_2_b [style=invis, shape=point];
+	layer_2_a [style=invis, shape=point];
+	layer_2_b -> layer_2 [style=invis];
+	layer_2 -> layer_2_a [style=invis];
+	layer_1_a -> layer_2_b [style=invis];
+	layer_3 [shape=plaintext, label="layer 3"];
+	layer_3_b [style=invis, shape=point];
+	layer_3_a [style=invis, shape=point];
+	layer_3_b -> layer_3 [style=invis];
+	layer_3 -> layer_3_a [style=invis];
+	layer_2_a -> layer_3_b [style=invis];
+	layer_4 [shape=plaintext, label="layer 4"];
+	layer_4_b [style=invis, shape=point];
+	layer_4_a [style=invis, shape=point];
+	layer_4_b -> layer_4 [style=invis];
+	layer_4 -> layer_4_a [style=invis];
+	layer_3_a -> layer_4_b [style=invis];
+	
+	/* States */
+	agent_a_5 [label = "5"]
+	agent_a_4 [label = "4"]
+	agent_a_3 [label = "3"]
+	agent_a_2 [label = "2"]
+	agent_a_1 [label = "1"]
+	agent_a_start [label = "start"]
+	
+	/* Functions */
+	agent_a_agent_a_1_start_1 [label = "agent_a_1", shape = rect]
+	agent_a_agent_a_2_1_2 [label = "agent_a_2", shape = rect]
+	agent_a_agent_a_3_2_3 [label = "agent_a_3", shape = rect]
+	agent_a_agent_a_4_3_4 [label = "agent_a_4", shape = rect]
+	agent_a_agent_a_5_4_5 [label = "agent_a_5", shape = rect]
+	
+	/* Message types */
+	m_sub_1_message [ label = "m_sub_1" color="#00ff00" shape = parallelogram];
+	m_sub_1_message -> m_sub_1_message_start_0 [ color="#00ff00" ];
+	m_sub_1_message_start_0 [ label = "start 0" color="#00ff00" shape = parallelogram];
+	m_sub_1_message_start_0 -> m_sub_1_message_end_0 [ color="#00ff00" ];
+	m_sub_1_message_end_0 [ label = "end 1" color="#00ff00" shape = parallelogram];
+	m_sub_1_message_end_0 -> agent_a_agent_a_3_2_3 [ color="#00ff00" label = "Box2d: 2.0" ];
+	m_sub_1_message_end_0 -> agent_a_agent_a_2_1_2 [ color="#00ff00" label = "Box3d: a.box" ];
+	m_sub_2_message [ label = "m_sub_2" color="#00ff00" shape = parallelogram];
+	m_sub_2_message -> m_sub_2_message_start_0 [ color="#00ff00" ];
+	m_sub_2_message_start_0 [ label = "start 0" color="#00ff00" shape = parallelogram];
+	m_sub_2_message_start_0 -> m_sub_2_message_end_0 [ color="#00ff00" ];
+	m_sub_2_message_end_0 [ label = "end 3" color="#00ff00" shape = parallelogram];
+	m_sub_2_message_end_0 -> agent_a_agent_a_4_3_4 [ color="#00ff00" label = "Box2d: 3.0" ];
+	m_sub_3_message [ label = "m_sub_3" color="#00ff00" shape = parallelogram];
+	m_sub_3_message -> m_sub_3_message_start_0 [ color="#00ff00" ];
+	m_sub_3_message_start_0 [ label = "start 0" color="#00ff00" shape = parallelogram];
+	m_sub_3_message_start_0 -> m_sub_3_message_end_0 [ color="#00ff00" ];
+	m_sub_3_message_end_0 [ label = "end 4" color="#00ff00" shape = parallelogram];
+	m_sub_3_message_end_0 -> agent_a_agent_a_5_4_5 [ color="#00ff00" label = "Box3d: 4.0" ];
+	
+	/* Transitions */
+	agent_a_start -> agent_a_agent_a_1_start_1;
+	agent_a_agent_a_1_start_1 -> agent_a_1;
+	agent_a_1 -> agent_a_agent_a_2_1_2;
+	agent_a_agent_a_2_1_2 -> agent_a_2;
+	agent_a_2 -> agent_a_agent_a_3_2_3;
+	agent_a_agent_a_3_2_3 -> agent_a_3;
+	agent_a_3 -> agent_a_agent_a_4_3_4;
+	agent_a_agent_a_4_3_4 -> agent_a_4;
+	agent_a_4 -> agent_a_agent_a_5_4_5;
+	agent_a_agent_a_5_4_5 -> agent_a_5;
+	
+	/* Communications */
+	agent_a_agent_a_1_start_1 -> m_sub_1_message [ color="#00ff00" ];
+	agent_a_agent_a_1_start_1 -> m_sub_2_message [ color="#00ff00" ];
+	agent_a_agent_a_1_start_1 -> m_sub_3_message [ color="#00ff00" ];
+	{ rank=same; layer_0;  agent_a_agent_a_1_start_1; }
+	{ rank=same; layer_0_b; }
+	{ rank=same; layer_0_a; m_sub_1_message_start_0; m_sub_2_message_start_0; m_sub_3_message_start_0; }
+	{ rank=same; layer_1;  agent_a_agent_a_2_1_2; }
+	{ rank=same; layer_1_b; m_sub_1_message_end_0; }
+	{ rank=same; layer_1_a; }
+	{ rank=same; layer_2;  agent_a_agent_a_3_2_3; }
+	{ rank=same; layer_2_b; }
+	{ rank=same; layer_2_a; }
+	{ rank=same; layer_3;  agent_a_agent_a_4_3_4; }
+	{ rank=same; layer_3_b; m_sub_2_message_end_0; }
+	{ rank=same; layer_3_a; }
+	{ rank=same; layer_4;  agent_a_agent_a_5_4_5; }
+	{ rank=same; layer_4_b; m_sub_3_message_end_0; }
+	{ rank=same; layer_4_a; }
+}

@@ -1,0 +1,60 @@
+digraph state_graph {
+	rankdir=TB;
+	size="8,5;"
+	layer_0 [shape=plaintext, label="layer 0"];
+	layer_1 [shape=plaintext, label="layer 1"];
+	layer_0 -> layer_1 [style=invis];
+	layer_2 [shape=plaintext, label="layer 2"];
+	layer_1 -> layer_2 [style=invis];
+	layer_3 [shape=plaintext, label="layer 3"];
+	layer_2 -> layer_3 [style=invis];
+	layer_4 [shape=plaintext, label="layer 4"];
+	layer_3 -> layer_4 [style=invis];
+	
+	/* States */
+	agent_a_end [label = "end"]
+	agent_a_middle4 [label = "middle4"]
+	agent_a_middle3 [label = "middle3"]
+	agent_a_middle2 [label = "middle2"]
+	agent_a_middle1 [label = "middle1"]
+	agent_a_start [label = "start"]
+	agent_b_end [label = "end"]
+	agent_b_middle [label = "middle"]
+	agent_b_start [label = "start"]
+	agent_a_agent_a_1_start_middle1 [label = "agent_a_1", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_2_middle1_middle2 [label = "agent_a_2", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_3_middle2_middle3 [label = "agent_a_3", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_4_middle3_middle4 [label = "agent_a_4", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_5_middle4_end [label = "agent_a_5", shape = box,style=filled,color=antiquewhite];
+	agent_b_agent_b_1_start_middle [label = "agent_b_1", shape = box,style=filled,color=antiquewhite];
+	agent_b_agent_b_2_middle_end [label = "agent_b_2", shape = box,style=filled,color=antiquewhite];
+	
+	/* Transitions */
+	agent_a_start -> agent_a_agent_a_1_start_middle1;
+	agent_a_agent_a_1_start_middle1 -> agent_a_middle1;
+	agent_a_middle1 -> agent_a_agent_a_2_middle1_middle2;
+	agent_a_agent_a_2_middle1_middle2 -> agent_a_middle2;
+	agent_a_middle2 -> agent_a_agent_a_3_middle2_middle3;
+	agent_a_agent_a_3_middle2_middle3 -> agent_a_middle3;
+	agent_a_middle3 -> agent_a_agent_a_4_middle3_middle4;
+	agent_a_agent_a_4_middle3_middle4 -> agent_a_middle4;
+	agent_a_middle4 -> agent_a_agent_a_5_middle4_end;
+	agent_a_agent_a_5_middle4_end -> agent_a_end;
+	agent_b_start -> agent_b_agent_b_1_start_middle;
+	agent_b_agent_b_1_start_middle -> agent_b_middle;
+	agent_b_middle -> agent_b_agent_b_2_middle_end;
+	agent_b_agent_b_2_middle_end -> agent_b_end;
+	
+	/* Communications */
+	agent_a_agent_a_2_middle1_middle2 -> agent_b_agent_b_2_middle_end [ label = "m_sub_2" color="#00ff00" constraint=false];
+	agent_a_agent_a_1_start_middle1 -> agent_b_agent_b_1_start_middle [ label = "m_sub_1" color="#00ff00" constraint=false];
+	agent_a_agent_a_4_middle3_middle4 -> agent_a_agent_a_5_middle4_end [ label = "m_sub_4" color="#00ff00" constraint=false];
+	agent_a_agent_a_3_middle2_middle3 -> agent_a_agent_a_5_middle4_end [ label = "m_sub_3" color="#00ff00" constraint=false];
+	agent_a_agent_a_3_middle2_middle3 -> agent_a_agent_a_4_middle3_middle4 [ label = "m_sub_3" color="#00ff00" constraint=false];
+	agent_a_agent_a_1_start_middle1 -> agent_a_agent_a_2_middle1_middle2 [ label = "m_sub_1" color="#00ff00" constraint=false];
+	{ rank=same; layer_0;  agent_a_agent_a_1_start_middle1; }
+	{ rank=same; layer_1;  agent_a_agent_a_2_middle1_middle2;  agent_b_agent_b_1_start_middle; }
+	{ rank=same; layer_2;  agent_a_agent_a_3_middle2_middle3;  agent_b_agent_b_2_middle_end; }
+	{ rank=same; layer_3;  agent_a_agent_a_4_middle3_middle4; }
+	{ rank=same; layer_4;  agent_a_agent_a_5_middle4_end; }
+}

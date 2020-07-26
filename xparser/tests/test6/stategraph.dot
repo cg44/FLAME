@@ -1,0 +1,64 @@
+digraph state_graph {
+	rankdir=TB;
+	size="8,5;"
+	
+	/* Layers */
+	layer_0 [shape=plaintext, label="layer 0"];
+	layer_0_b [style=invis, shape=point];
+	layer_0_a [style=invis, shape=point];
+	layer_0_b -> layer_0 [style=invis];
+	layer_0 -> layer_0_a [style=invis];
+	layer_1 [shape=plaintext, label="layer 1"];
+	layer_1_b [style=invis, shape=point];
+	layer_1_a [style=invis, shape=point];
+	layer_1_b -> layer_1 [style=invis];
+	layer_1 -> layer_1_a [style=invis];
+	layer_0_a -> layer_1_b [style=invis];
+	layer_2 [shape=plaintext, label="layer 2"];
+	layer_2_b [style=invis, shape=point];
+	layer_2_a [style=invis, shape=point];
+	layer_2_b -> layer_2 [style=invis];
+	layer_2 -> layer_2_a [style=invis];
+	layer_1_a -> layer_2_b [style=invis];
+	
+	/* States */
+	agent_a_end [label = "end"]
+	agent_a_middle2 [label = "middle2"]
+	agent_a_middle1 [label = "middle1"]
+	agent_a_start [label = "start"]
+	
+	/* Functions */
+	agent_a_agent_a_1_option_1_start_middle1 [label = "agent_a_1_option_1", shape = rect]
+	agent_a_agent_a_1_option_2_start_middle1 [label = "agent_a_1_option_2", shape = rect]
+	agent_a_agent_a_2_option_1_middle1_middle2 [label = "agent_a_2_option_1", shape = rect]
+	agent_a_agent_a_2_option_2_middle1_middle2 [label = "agent_a_2_option_2", shape = rect]
+	agent_a_agent_a_3_option_1_middle2_end [label = "agent_a_3_option_1", shape = rect]
+	agent_a_agent_a_3_option_2_middle2_end [label = "agent_a_3_option_2", shape = rect]
+	
+	/* Message types */
+	
+	/* Transitions */
+	agent_a_start -> agent_a_agent_a_1_option_1_start_middle1 [ label = "a.int_single EQ 1"];
+	agent_a_agent_a_1_option_1_start_middle1 -> agent_a_middle1;
+	agent_a_start -> agent_a_agent_a_1_option_2_start_middle1 [ label = "a.int_single EQ 1"];
+	agent_a_agent_a_1_option_2_start_middle1 -> agent_a_middle1;
+	agent_a_middle1 -> agent_a_agent_a_2_option_1_middle1_middle2 [ label = "a.int_single EQ 1"];
+	agent_a_agent_a_2_option_1_middle1_middle2 -> agent_a_middle2;
+	agent_a_middle1 -> agent_a_agent_a_2_option_2_middle1_middle2 [ label = "a.int_single EQ 2"];
+	agent_a_agent_a_2_option_2_middle1_middle2 -> agent_a_middle2;
+	agent_a_middle2 -> agent_a_agent_a_3_option_1_middle2_end [ label = "a.int_single EQ 2"];
+	agent_a_agent_a_3_option_1_middle2_end -> agent_a_end;
+	agent_a_middle2 -> agent_a_agent_a_3_option_2_middle2_end [ label = "a.int_single EQ 2"];
+	agent_a_agent_a_3_option_2_middle2_end -> agent_a_end;
+	
+	/* Communications */
+	{ rank=same; layer_0;  agent_a_agent_a_1_option_1_start_middle1;  agent_a_agent_a_1_option_2_start_middle1; }
+	{ rank=same; layer_0_b; }
+	{ rank=same; layer_0_a; }
+	{ rank=same; layer_1;  agent_a_agent_a_2_option_1_middle1_middle2;  agent_a_agent_a_2_option_2_middle1_middle2; }
+	{ rank=same; layer_1_b; }
+	{ rank=same; layer_1_a; }
+	{ rank=same; layer_2;  agent_a_agent_a_3_option_1_middle2_end;  agent_a_agent_a_3_option_2_middle2_end; }
+	{ rank=same; layer_2_b; }
+	{ rank=same; layer_2_a; }
+}

@@ -1,0 +1,47 @@
+digraph state_graph {
+	rankdir=TB;
+	size="8,5;"
+	layer_0 [shape=plaintext, label="layer 0"];
+	layer_1 [shape=plaintext, label="layer 1"];
+	layer_0 -> layer_1 [style=invis];
+	layer_2 [shape=plaintext, label="layer 2"];
+	layer_1 -> layer_2 [style=invis];
+	layer_3 [shape=plaintext, label="layer 3"];
+	layer_2 -> layer_3 [style=invis];
+	
+	/* States */
+	agent_a_end [label = "end"]
+	agent_a_1 [label = "1"]
+	agent_a_start [label = "start"]
+	agent_b_end [label = "end"]
+	agent_b_1 [label = "1"]
+	agent_b_start [label = "start"]
+	agent_a_agent_a_1_start_1 [label = "agent_a_1", shape = box,style=filled,color=antiquewhite];
+	agent_a_idle_start_1 [label = "idle", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_2_1_end [label = "agent_a_2", shape = box,style=filled,color=aquamarine];
+	agent_b_agent_b_1_start_1 [label = "agent_b_1", shape = box,style=filled,color=antiquewhite];
+	agent_b_agent_b_2_1_end [label = "agent_b_2", shape = box,style=filled,color=aquamarine];
+	agent_b_idle_1_end [label = "idle", shape = box,style=filled,color=aquamarine];
+	
+	/* Transitions */
+	agent_a_start -> agent_a_agent_a_1_start_1 [ label = "Periodicity: weekly\nPhase: 1"];
+	agent_a_agent_a_1_start_1 -> agent_a_1;
+	agent_a_start -> agent_a_idle_start_1 [ label = "not ( Periodicity: weekly\nPhase: 1 )"];
+	agent_a_idle_start_1 -> agent_a_1;
+	agent_a_1 -> agent_a_agent_a_2_1_end;
+	agent_a_agent_a_2_1_end -> agent_a_end;
+	agent_b_start -> agent_b_agent_b_1_start_1;
+	agent_b_agent_b_1_start_1 -> agent_b_1;
+	agent_b_1 -> agent_b_agent_b_2_1_end [ label = "a.type EQ 1"];
+	agent_b_agent_b_2_1_end -> agent_b_end;
+	agent_b_1 -> agent_b_idle_1_end [ label = "a.type NEQ 1"];
+	agent_b_idle_1_end -> agent_b_end;
+	
+	/* Communications */
+	agent_a_agent_a_1_start_1 -> agent_b_agent_b_1_start_1 [ label = "m_sub_1" color="#00ff00" constraint=false];
+	agent_b_agent_b_2_1_end -> agent_a_agent_a_2_1_end [ label = "m_sub_2" color="#00ff00" constraint=false];
+	{ rank=same; layer_0;  agent_a_agent_a_1_start_1;  agent_a_idle_start_1; }
+	{ rank=same; layer_1;  agent_b_agent_b_1_start_1; }
+	{ rank=same; layer_2;  agent_b_agent_b_2_1_end;  agent_b_idle_1_end; }
+	{ rank=same; layer_3;  agent_a_agent_a_2_1_end; }
+}

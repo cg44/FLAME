@@ -1,0 +1,56 @@
+digraph communication_graph {
+	rankdir=BT;
+	size="8,5;"
+	layer_0 [ color="#ff0000" label="layer 0"];
+	agent_a_agent_a_send_start_middle1 [ shape = rect label="agent_a_agent_a_send_start_middle1 [-6]" ];
+	agent_a_agent_a_send_start_middle1 -> layer_0;
+	layer_1 [ color="#ff0000" label="layer 1"];
+	layer_1 ->agent_a_agent_a_send_start_middle1;
+	agent_a_agent_a_not_random_middle1_middle2 [ shape = rect label="agent_a_agent_a_not_random_middle1_middle2 [1]" ];
+	agent_a_agent_a_not_random_middle1_middle2 -> layer_1;
+	layer_2 [ color="#ff0000" label="layer 2"];
+	layer_2 ->agent_a_agent_a_not_random_middle1_middle2;
+	agent_a_agent_a_random_middle2_middle3 [ shape = rect label="agent_a_agent_a_random_middle2_middle3 [2]" ];
+	agent_a_agent_a_random_middle2_middle3 -> layer_2;
+	layer_3 [ color="#ff0000" label="layer 3"];
+	layer_3 ->agent_a_agent_a_random_middle2_middle3;
+	agent_a_agent_a_not_random_sort_middle3_middle4 [ shape = rect label="agent_a_agent_a_not_random_sort_middle3_middle4 [3]" ];
+	agent_a_agent_a_not_random_sort_middle3_middle4 -> layer_3;
+	layer_4 [ color="#ff0000" label="layer 4"];
+	layer_4 ->agent_a_agent_a_not_random_sort_middle3_middle4;
+	agent_a_agent_a_random_sort_middle4_middle5 [ shape = rect label="agent_a_agent_a_random_sort_middle4_middle5 [4]" ];
+	agent_a_agent_a_random_sort_middle4_middle5 -> layer_4;
+	layer_5 [ color="#ff0000" label="layer 5"];
+	layer_5 ->agent_a_agent_a_random_sort_middle4_middle5;
+	agent_a_agent_a_filter_middle5_middle6 [ shape = rect label="agent_a_agent_a_filter_middle5_middle6 [10]" ];
+	agent_a_agent_a_filter_middle5_middle6 -> layer_5;
+	layer_6 [ color="#ff0000" label="layer 6"];
+	layer_6 ->agent_a_agent_a_filter_middle5_middle6;
+	agent_a_agent_a_filter_sort_middle6_end [ shape = rect label="agent_a_agent_a_filter_sort_middle6_end [6]" ];
+	agent_a_agent_a_filter_sort_middle6_end -> layer_6;
+	m_sub_1_message [ label = "m_sub_1" color="#00ff00" shape = parallelogram];
+	m_sub_1_message_sync_start_0 [ label = "start" color="#00ff00" shape = parallelogram];
+	m_sub_1_message_sync_start_0 -> m_sub_1_message [ color="#00ff00" label="m_sub_1_1"];
+	{ rank=same; agent_a_agent_a_send_start_middle1; m_sub_1_message_sync_start_0; }
+	m_sub_1_message_sync_end_0 [ label = "end" color="#00ff00" shape = parallelogram];
+	m_sub_1_message_sync_end_0 -> m_sub_1_message_sync_start_0 [ color="#00ff00" ];
+	m_sub_1_message_sync_end_0 -> agent_a_agent_a_filter_sort_middle6_end [ color="#00ff00" constraint=false ];
+	m_sub_1_message_sync_end_0 -> agent_a_agent_a_filter_middle5_middle6 [ color="#00ff00" constraint=false ];
+	m_sub_1_message_sync_end_0 -> agent_a_agent_a_random_sort_middle4_middle5 [ color="#00ff00" constraint=false ];
+	m_sub_1_message_sync_end_0 -> agent_a_agent_a_not_random_sort_middle3_middle4 [ color="#00ff00" constraint=false ];
+	m_sub_1_message_sync_end_0 -> agent_a_agent_a_random_middle2_middle3 [ color="#00ff00" constraint=false ];
+	m_sub_1_message_sync_end_0 -> agent_a_agent_a_not_random_middle1_middle2 [ color="#00ff00" constraint=false ];
+	m_sub_1_message_sync_start_0 -> agent_a_agent_a_send_start_middle1 [ color="#00ff00", constraint=false, style=dashed ];
+	{ rank=same; agent_a_agent_a_not_random_middle1_middle2; m_sub_1_message_sync_end_0; }
+	m_sub_2_message [ label = "m_sub_2" color="#00ff00" shape = parallelogram];
+	m_sub_2_message_sync_start_0 [ label = "start" color="#00ff00" shape = parallelogram];
+	m_sub_2_message_sync_start_0 -> m_sub_2_message [ color="#00ff00" label="m_sub_2_5"];
+	{ rank=same; agent_a_agent_a_send_start_middle1; m_sub_2_message_sync_start_0; }
+	m_sub_2_message_sync_end_0 [ label = "end" color="#00ff00" shape = parallelogram];
+	m_sub_2_message_sync_end_0 -> m_sub_2_message_sync_start_0 [ color="#00ff00" ];
+	m_sub_2_message_sync_end_0 -> agent_a_agent_a_filter_middle5_middle6 [ color="#00ff00" constraint=false ];
+	m_sub_2_message_sync_start_0 -> agent_a_agent_a_send_start_middle1 [ color="#00ff00", constraint=false, style=dashed ];
+	{ rank=same; agent_a_agent_a_filter_middle5_middle6; m_sub_2_message_sync_end_0; }
+	agent_a_agent_a_send_start_middle1 -> m_sub_1_message [ color="#00ff00" constraint=false ];
+	agent_a_agent_a_send_start_middle1 -> m_sub_2_message [ color="#00ff00" constraint=false ];
+}

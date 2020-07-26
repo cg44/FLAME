@@ -1,0 +1,202 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[table]{xcolor}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{boxedminipage}
+\usepackage{lscape}
+\usepackage{minitoc}
+\usepackage{epsfig,psfrag,graphicx,verbatim}
+\usepackage{natbib}
+\usepackage{booktabs, longtable}
+\usepackage{url}
+\usepackage{makeidx}
+
+%% Define a new 'code' style for the url package that will use a sans serif font.
+\makeatletter
+\def\url@codestyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\sffamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{code}
+
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23cm}
+\title{test_model_6 Reference Manual}
+\author{Author names to add}
+\date{\today}
+
+\makeindex
+
+\begin{document}
+\rowcolors[]{2}{lightgray!40}{yellow!25} %% color table rows with alternating colors
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{test_model_6 FLAME Implementation}
+
+\subsection{agent\_a}
+
+\begin{longtable}[H!]{ll}
+\caption{{\bfseries List of memory variables for agent\_a agent.}}
+\label{Table: agent\_a Memory}\\
+\toprule 
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endfirsthead
+\multicolumn{2}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\toprule
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endhead
+\multicolumn{2}{r}{{\emph{Continued on next page}}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\parbox{5cm}{\url{int} \url{id}} \index{\url{id}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{int} \url{int_single}} \index{\url{int_single}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{int} \url{int_single_2}} \index{\url{int_single_2}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{float} \url{float_single}} \index{\url{float_single}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{double} \url{double_single}} \index{\url{double_single}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{char} \url{char_single}} \index{\url{char_single}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{int} \url{int_list}} \index{\url{int_list}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{float} \url{float_list}} \index{\url{float_list}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{double} \url{double_list}} \index{\url{double_list}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{char} \url{char_list}} \index{\url{char_list}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{int_array} \url{int_dyn_array}} \index{\url{int_dyn_array}} & \parbox{10cm}{} \\
+\end{longtable}
+\begin{longtable}[H!]{ll}
+\caption{{\bfseries List of functions for agent\_a agent.}}
+\label{Table: agent\_a Functions}\\
+\toprule 
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endfirsthead
+\multicolumn{2}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\toprule
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endhead
+\multicolumn{2}{r}{{\emph{Continued on next page}}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\midrule
+\parbox{5cm}{\url{agent_a_1_option_1}} \index{\url{agent_a_1_option_1}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{agent_a_1_option_2}} \index{\url{agent_a_1_option_2}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{agent_a_2_option_1}} \index{\url{agent_a_2_option_1}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{agent_a_2_option_2}} \index{\url{agent_a_2_option_2}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{agent_a_3_option_1}} \index{\url{agent_a_3_option_1}} & \parbox{10cm}{} \\
+\midrule
+\parbox{5cm}{\url{agent_a_3_option_2}} \index{\url{agent_a_3_option_2}} & \parbox{10cm}{} \\
+\end{longtable}
+\subsection{Messages}
+See Table \ref{Table: Messages}.\begin{longtable}[H!]{ll}
+\caption{{\bfseries List of messages.}}
+\label{Table: Messages}\\
+\toprule 
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endfirsthead
+\multicolumn{2}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\toprule
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endhead
+\multicolumn{2}{r}{{\emph{Continued on next page}}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\end{longtable}
+\subsection{Constants}
+\begin{longtable}[H!]{ll}
+\caption{{\bfseries List of constants.}}
+\label{Table: constants}\\
+\toprule 
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endfirsthead
+\multicolumn{2}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\toprule
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endhead
+\multicolumn{2}{r}{{\emph{Continued on next page}}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\url{int} \url{env_int} \index{\url{env_int}} & \parbox{10cm}{int value read in from 0.xml}\\
+\url{float} \url{env_float} \index{\url{env_float}} & \parbox{10cm}{float value read in from 0.xml}\\
+\url{double} \url{env_double} \index{\url{env_double}} & \parbox{10cm}{double value read in from 0.xml}\\
+\url{char} \url{env_char} \index{\url{env_char}} & \parbox{10cm}{char value read in from 0.xml}\\
+\end{longtable}
+\subsection{Datatypes}
+\begin{longtable}[H!]{ll}
+\caption{{\bfseries List of attributes for ADTs.}}
+\label{Table: datatypes}\\
+\toprule 
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endfirsthead
+\multicolumn{2}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\toprule
+\bfseries Name & \bfseries Description \\ \hline 
+\midrule
+\endhead
+\multicolumn{2}{r}{{\emph{Continued on next page}}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\url{my_datatype_1} \index{\url{my_datatype_1}} & \parbox{10cm}{} \\
+    \url{int} \url{id} & \parbox{8cm}{}\\
+    \url{int} \url{type} & \parbox{8cm}{}\\
+\midrule
+\url{my_datatype_2} \index{\url{my_datatype_2}} & \parbox{10cm}{} \\
+    \url{int} \url{int_list} & \parbox{8cm}{}\\
+    \url{my_datatype_1} \url{var_my_datatype_1_list} & \parbox{8cm}{}\\
+    \url{my_datatype_1} \url{var_my_datatype_1} & \parbox{8cm}{}\\
+\midrule
+\url{my_datatype_3} \index{\url{my_datatype_3}} & \parbox{10cm}{} \\
+    \url{int} \url{int_single} & \parbox{8cm}{}\\
+    \url{float} \url{float_single} & \parbox{8cm}{}\\
+    \url{double} \url{double_single} & \parbox{8cm}{}\\
+    \url{char} \url{char_single} & \parbox{8cm}{}\\
+    \url{int} \url{int_list} & \parbox{8cm}{}\\
+    \url{float} \url{float_list} & \parbox{8cm}{}\\
+    \url{double} \url{double_list} & \parbox{8cm}{}\\
+    \url{char} \url{char_list} & \parbox{8cm}{}\\
+    \url{int_array} \url{int_dynamic_list} & \parbox{8cm}{}\\
+    \url{float_array} \url{float_dynamic_list} & \parbox{8cm}{}\\
+    \url{double_array} \url{double_dynamic_list} & \parbox{8cm}{}\\
+    \url{char_array} \url{char_dynamic_list} & \parbox{8cm}{}\\
+\end{longtable}
+
+\printindex
+
+\end{document}

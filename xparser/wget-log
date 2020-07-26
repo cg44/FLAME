@@ -1,0 +1,3 @@
+Will not apply HSTS. The HSTS database must be a regular and non-world-writable file.
+ERROR: could not open HSTS store at '/home/chris/.wget-hsts'. HSTS will be disabled.
+//www.biblegateway.com/passage/?search=John%204: Scheme missing.

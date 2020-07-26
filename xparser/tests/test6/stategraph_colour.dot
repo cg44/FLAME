@@ -1,0 +1,40 @@
+digraph state_graph {
+	rankdir=TB;
+	size="8,5;"
+	layer_0 [shape=plaintext, label="layer 0"];
+	layer_1 [shape=plaintext, label="layer 1"];
+	layer_0 -> layer_1 [style=invis];
+	layer_2 [shape=plaintext, label="layer 2"];
+	layer_1 -> layer_2 [style=invis];
+	
+	/* States */
+	agent_a_end [label = "end"]
+	agent_a_middle2 [label = "middle2"]
+	agent_a_middle1 [label = "middle1"]
+	agent_a_start [label = "start"]
+	agent_a_agent_a_1_option_1_start_middle1 [label = "agent_a_1_option_1", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_1_option_2_start_middle1 [label = "agent_a_1_option_2", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_2_option_1_middle1_middle2 [label = "agent_a_2_option_1", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_2_option_2_middle1_middle2 [label = "agent_a_2_option_2", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_3_option_1_middle2_end [label = "agent_a_3_option_1", shape = box,style=filled,color=antiquewhite];
+	agent_a_agent_a_3_option_2_middle2_end [label = "agent_a_3_option_2", shape = box,style=filled,color=antiquewhite];
+	
+	/* Transitions */
+	agent_a_start -> agent_a_agent_a_1_option_1_start_middle1 [ label = "a.int_single EQ 1"];
+	agent_a_agent_a_1_option_1_start_middle1 -> agent_a_middle1;
+	agent_a_start -> agent_a_agent_a_1_option_2_start_middle1 [ label = "a.int_single EQ 1"];
+	agent_a_agent_a_1_option_2_start_middle1 -> agent_a_middle1;
+	agent_a_middle1 -> agent_a_agent_a_2_option_1_middle1_middle2 [ label = "a.int_single EQ 1"];
+	agent_a_agent_a_2_option_1_middle1_middle2 -> agent_a_middle2;
+	agent_a_middle1 -> agent_a_agent_a_2_option_2_middle1_middle2 [ label = "a.int_single EQ 2"];
+	agent_a_agent_a_2_option_2_middle1_middle2 -> agent_a_middle2;
+	agent_a_middle2 -> agent_a_agent_a_3_option_1_middle2_end [ label = "a.int_single EQ 2"];
+	agent_a_agent_a_3_option_1_middle2_end -> agent_a_end;
+	agent_a_middle2 -> agent_a_agent_a_3_option_2_middle2_end [ label = "a.int_single EQ 2"];
+	agent_a_agent_a_3_option_2_middle2_end -> agent_a_end;
+	
+	/* Communications */
+	{ rank=same; layer_0;  agent_a_agent_a_1_option_1_start_middle1;  agent_a_agent_a_1_option_2_start_middle1; }
+	{ rank=same; layer_1;  agent_a_agent_a_2_option_1_middle1_middle2;  agent_a_agent_a_2_option_2_middle1_middle2; }
+	{ rank=same; layer_2;  agent_a_agent_a_3_option_1_middle2_end;  agent_a_agent_a_3_option_2_middle2_end; }
+}

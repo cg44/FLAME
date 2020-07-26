@@ -1,0 +1,17 @@
+digraph state_graph {
+	rankdir=TB;
+	size="8,5;"
+	layer_0 [shape=plaintext, label="layer 0"];
+	
+	/* States */
+	agent_a_end [label = "end"]
+	agent_a_start [label = "start"]
+	agent_a_idle_start_end [label = "idle", shape = box,style=filled,color=antiquewhite];
+	
+	/* Transitions */
+	agent_a_start -> agent_a_idle_start_end;
+	agent_a_idle_start_end -> agent_a_end;
+	
+	/* Communications */
+	{ rank=same; layer_0;  agent_a_idle_start_end; }
+}

@@ -10,8 +10,6 @@
 ```
 The Flexible Large-scale Agent Modelling Environment
 
-xparser - FLAME program generator
-
 ===================================================================
 
 FLAME is a generic agent-based modelling system which can be used 

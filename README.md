@@ -22,3 +22,11 @@ projects in which it has been used.
 
 ===================================================================
 
+There are four main components of FLAME:
+
+* xparser	- the FLAME model parser and code generator
+* libmboard	- the FLAME Message Board library
+* examples 	- a directory of examples FLAME programs
+* docs		- a slection of FLAME documentation
+
+
